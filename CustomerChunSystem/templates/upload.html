@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Dataset</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#f2edf8,#ccd7e8);
+            height: 100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin:0;
+        }
+
+        .container{
+            background:white;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0px 8px 20px rgba(0,0,0,0.2);
+            text-align:center;
+            width:350px;
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input[type="file"]{
+            border:1px solid #ccc;
+            padding:8px;
+            border-radius:5px;
+            width:100%;
+        }
+
+        button{
+            margin-top:20px;
+            background:#c9d4e8;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#1b5edb;
+        }
+
+        a{
+            display:inline-block;
+            margin-top:20px;
+            text-decoration:none;
+            color:#2575fc;
+            font-weight:bold;
+        }
+
+        a:hover{
+            text-decoration:underline;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Upload Customer Dataset</h2>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <br><br>
+    <button type="submit">Upload</button>
+</form>
+
+<br>
+<a href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>

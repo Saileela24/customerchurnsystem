@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Intelligence Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container-fluid p-4">
+
+    <h2 class="text-center mb-4">Customer Churn Intelligence Dashboard</h2>
+
+    <!-- ================= KPIs ================= -->
+    <div class="row text-center mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h6>Total Customers</h6>
+                <h3>{{ total }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h6>Churned Customers</h6>
+                <h3>{{ churned }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h6>Churn Rate</h6>
+                <h3>{{ churn_rate }}%</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h6>Total Revenue at Risk</h6>
+                <h3>₹{{ total_revenue_risk }}</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= RISK SEGMENT ================= -->
+    {% if risk_chart %}
+    <h4 class="mt-4">Risk Segmentation</h4>
+    {{ risk_chart|safe }}
+    {% endif %}
+
+    <!-- ================= HIGH RISK ================= -->
+    {% if high_risk_table %}
+    <h4 class="mt-4">High Risk Customers</h4>
+    {{ high_risk_table|safe }}
+    {% endif %}
+
+    <!-- ================= CONTRACT ================= -->
+    {% if contract_chart %}
+    <h4 class="mt-4">Churn by Contract Type</h4>
+    {{ contract_chart|safe }}
+    {% endif %}
+
+    <!-- ================= CATEGORY ================= -->
+    {% if category_chart %}
+    <h4 class="mt-4">Churn by Category</h4>
+    {{ category_chart|safe }}
+    {% endif %}
+
+    <!-- ================= REASON ================= -->
+    {% if reason_revenue_chart %}
+    <h4 class="mt-4">Revenue Loss by Churn Reason</h4>
+    {{ reason_revenue_chart|safe }}
+    {% endif %}
+
+    <!-- ================= SECTOR ================= -->
+    {% if sector_chart %}
+    <h4 class="mt-4">Churn by Internet Type</h4>
+    {{ sector_chart|safe }}
+    {% endif %}
+
+    <!-- ================= FORECAST ================= -->
+    {% if forecast_chart %}
+    <h4 class="mt-4">6-Month Churn Forecast</h4>
+    {{ forecast_chart|safe }}
+    {% endif %}
+
+    <!-- ================= FEATURE IMPORTANCE ================= -->
+    {% if feature_importance_chart %}
+    <h4 class="mt-4">Feature Importance</h4>
+    {{ feature_importance_chart|safe }}
+    {% endif %}
+
+    <!-- ================= BUSINESS ADVICE ================= -->
+    {% if advice %}
+    <h4 class="mt-4">Business Recommendations</h4>
+    <ul>
+        {% for item in advice %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- ================= ACTIONS ================= -->
+    <div class="mt-4 mb-5">
+        <a href="/download" class="btn btn-success">Download Predictions</a>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+
+</div>
+
+</body>
+</html>
